@@ -182,8 +182,9 @@ game.catchPokemon = function (pokemonObj) {
   this.party.push(pokemonObj);
 };
 
-// game.catchPokemon(pokemon[73]);
-// console.log(game.party);
+game.catchPokemon(pokemon[73]);
+console.log(game.party);
+console.log(game);
 
 
 /*
@@ -478,5 +479,53 @@ Log the object when it's constructed.
 
 Solve Exercise 21 here:
 */
+
+//          COPIED FROM EXERCISE 5
+
+// const pokeTypes = [...new Set(pokemon.map(p => p.type))];
+// // console.log (pokeTypes);
+
+const bugMon = pokemon.filter(p => p.type === 'bug');
+const dragonMon = pokemon.filter(p => p.type === 'dragon');
+const electricMon = pokemon.filter(p => p.type === 'electric');
+const fairyMon = pokemon.filter(p => p.type === 'fairy');
+const fightMon = pokemon.filter(p => p.type === 'fighting');
+const fireMon = pokemon.filter(p => p.type === 'fire');
+const ghostMon = pokemon.filter(p => p.type === 'ghost');
+const grassMon = pokemon.filter(p => p.type === 'grass');
+const groundMon = pokemon.filter(p => p.type === 'ground');
+const iceMon = pokemon.filter(p => p.type === 'ice');
+const normalMon = pokemon.filter(p => p.type === 'normal');
+const poisonMon = pokemon.filter(p => p.type === 'poison');
+const psychicMon = pokemon.filter(p => p.type === 'psychic');
+const rockMon = pokemon.filter(p => p.type === 'rock');
+const waterMon = pokemon.filter(p => p.type === 'water');
+
+console.log('*****');
+console.log('*****');
+console.log('*****');
+console.log('*****');
+
+// console.log(pokeTypes);
+// console.log(bugMon);
+
+const pokemonTypesObj = {
+  bug: bugMon,
+  dragon: dragonMon,
+  electric: electricMon,
+  fairy: fairyMon,
+  fight: fightMon,
+  fire: fireMon,
+  grass: grassMon,
+  ground: groundMon,
+  ice: iceMon,
+  normal: normalMon,
+  poison: poisonMon,
+  psych: psychicMon,
+  rock: rockMon,
+  water: waterMon
+};
+
+console.log(pokemonTypesObj);
 
 
