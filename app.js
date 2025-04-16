@@ -372,11 +372,11 @@ console.log("***");
 console.log("***");
 game.catchPokemon(pokemon[13]);
 game.catchPokemon(pokemon[133]);
-game.catchPokemon(pokemon[15]);
-game.catchPokemon(pokemon[10]);
-game.catchPokemon(pokemon[50]);
-game.catchPokemon(pokemon[8]);
-game.catchPokemon(pokemon[63]);
+// game.catchPokemon(pokemon[15]);
+// game.catchPokemon(pokemon[10]);
+// game.catchPokemon(pokemon[50]);
+// game.catchPokemon(pokemon[8]);
+// game.catchPokemon(pokemon[63]);
 // game.catchPokemon(pokemon[2]);
 // game.catchPokemon(pokemon[0]);
 // console.log(game.items);
@@ -413,7 +413,7 @@ console.log('****');
 console.log('****');
 console.log('****');
 game.catchPokemon(pokemon[99]);
-// console.log(game);
+console.log(game);
 
 /*
 Exercise 20
@@ -426,16 +426,57 @@ If there is not a match, then return a string noting that the selected Pokemon d
 Solve Exercise 20 here:
 */
 
-game.catchPokemon = function (pokemonObj) {
-  if (pokeBall.quantity === 0)
+game.catchPokemon = function (pokeName) {
+  if (pokeBall.quantity === 0) {
     return console.log("Oh no, you are out of Pokeballs! Acquire more to catch em' all!");
-
-  else {
-    this.party.push(pokemonObj);
-    if (this.party.length > 6) {
-      const pokeLimbo = this.party.pop()
-      this.collection.push(pokeLimbo);
-    }
+  }
+  const pokemonObj = pokemon.find(p => p.name.toLowerCase() === pokeName.toLowerCase());
+  if (!pokemonObj) {
+    return console.log(`${pokeName} does not exist!`)
+  }
+  this.party.push(pokemonObj);
+  if (this.party.length > 6) {
+    const pokeLimbo = this.party.pop()
+    this.collection.push(pokeLimbo);
+    console.log(`You just caught ${pokeName}!`)
   }
   pokeBall.quantity -= 1;
 };
+
+console.log('*****');
+console.log('*****');
+console.log('*****');
+
+game.catchPokemon('pikaChu');
+game.catchPokemon('Grimmace');
+game.catchPokemon('mewtwo');
+game.catchPokemon('elmo');
+console.log(game);
+
+/*
+Exercise 21
+Dynamically construct an object with the existing `pokemon` data sorted by the different pokemon types. The object will have this structure:
+
+{
+  grass: [
+    { number: 1, name: 'Bulbasaur', type: 'grass', hp: 45, starter: true },
+    { number: 2, name: 'Ivysaur', type: 'grass', hp: 60, starter: false },
+    { number: 3, name: 'Venusaur', type: 'grass', hp: 80, starter: false },
+    * more grass type Pokemon objects...
+  ],
+  fire: [
+    { number: 4, name: 'Charmander', type: 'fire', hp: 39, starter: true },
+    * more fire type Pokemon objects...
+  ],
+  water: [
+    * water type Pokemon objects...
+  ],
+  * etc... until there is an array for every Pokemon type!
+}
+
+Log the object when it's constructed.
+
+Solve Exercise 21 here:
+*/
+
+
